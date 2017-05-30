@@ -1,0 +1,2 @@
+from xmlnodecomp.xmlcompare import CompareResult
+from xmlnodecomp.xmlcompare import compare
