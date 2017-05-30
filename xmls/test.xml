@@ -1,0 +1,10 @@
+<root>
+	<node1>
+		<child1 name="child1" />
+		<child2 name="child2" />
+	</node1>
+	<node2>
+		<child3 name="child3" />
+		<child4 name="child4" />
+	</node2>
+</root>
