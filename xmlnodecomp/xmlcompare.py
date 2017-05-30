@@ -13,5 +13,6 @@ def compare(modxmlpath, orixmlpath=None):
         orixml = ElementTree.parse(orixmlpath)
     for node in modxml.getroot():
         print(node)
+        print()
 
     pass
