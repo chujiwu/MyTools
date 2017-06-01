@@ -12,7 +12,7 @@ def compare(modxmlpath, orixmlpath=None):
     if orixmlpath:
         orixml = ElementTree.parse(orixmlpath)
     for node in modxml.getroot():
-        print(node)
-        print()
+        for child in list(node):
+            print(child.attrib["name"])
 
     pass
