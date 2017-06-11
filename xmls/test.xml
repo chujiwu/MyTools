@@ -1,6 +1,8 @@
 <root>
 	<node1>
-		<child1 name="child1" />
+		<child1 name="child1">
+			<child1_child name = "grandson" />
+		</child1>
 		<child2 name="child2" />
 	</node1>
 	<node2>
