@@ -1,8 +1,5 @@
 from openpyxl import load_workbook
-from openpyxl.cell import Cell
-from openpyxl.workbook import Workbook
 from openpyxl.worksheet import Worksheet
-
 
 
 class Excel(object):
@@ -12,13 +9,23 @@ class Excel(object):
     def load_value(self, column_name):
         res = []
         tar_column_index = -1
+        combine_value = None
         for row in self._ws:
             for cell in row:
                 if cell.value == column_name:
                     tar_column_index = cell.col_idx
+                    continue
                 if tar_column_index != -1:
                     if cell.col_idx == tar_column_index:
-                        res.append(cell.value)
+                        if cell.value is not None:
+                            res.append(cell.value)
+                            combine_value = cell.value
+                        elif cell.value is None and combine_value is not None:
+                            res.append(combine_value)
+                            combine_value == None
+                        else:
+                            pass
+        print(res)
         return res
 
 
