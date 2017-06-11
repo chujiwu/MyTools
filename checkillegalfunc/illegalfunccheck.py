@@ -10,8 +10,6 @@ def has_illegal_field_field(formula, illegal_field):
         right_char = formula[right_index]
         if is_not_field_name_char(left_char) and is_not_field_name_char(right_char):
             is_illegal = False
-
-            # if near_char_no_related()
     return is_illegal
 
 
