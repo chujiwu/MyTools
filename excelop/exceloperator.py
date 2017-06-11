@@ -2,7 +2,7 @@ from openpyxl import load_workbook
 from openpyxl.worksheet import Worksheet
 
 
-class Excel(object):
+class ExcelSheet(object):
     def __init__(self, ws: Worksheet):
         self._ws = ws
 
@@ -25,7 +25,26 @@ class Excel(object):
                             combine_value == None
                         else:
                             pass
-        print(res)
+        return res
+
+    def locate(self, column_name, row_search_value, column_search_value):
+        res = []
+        column_index = -1
+        column_search_index = -1
+        head_row_founded = False
+        for row in self._ws:
+            for cell in row:
+                if cell.value == column_name:
+                    column_index = cell.col_idx
+                if cell.value == column_search_value:
+                    column_search_index = cell.col_idx
+                if column_index != -1 and column_search_index != -1:
+                    head_row_founded = True
+                    continue
+                if head_row_founded:
+                    if cell.col_idx == column_index:
+                        if cell.value == row_search_value:
+                            res.append((cell.row, cell.col_index))
         return res
 
 
@@ -34,9 +53,9 @@ def load_excel_by_sheet(f_p, sheet):
     ws = None
     if wb[sheet]:
         ws = wb[sheet]
-    return Excel(ws)
+    return ExcelSheet(ws)
 
 
 if __name__ == "__main__":
-    excel = load_excel_by_sheet("/Users/chujiwu/Desktop/test.xlsx", "工作表1")
-    excel.load_value("フォーム名")
+    excel_sheet = load_excel_by_sheet("/Users/chujiwu/Desktop/test.xlsx", "工作表1")
+    excel_sheet.load_value("フォーム名")
